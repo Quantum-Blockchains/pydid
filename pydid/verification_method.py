@@ -182,6 +182,12 @@ class VerificationMethod(Resource):
 
 # Verification Method Suites registered in DID Spec
 
+class MLDSA44VerificationKey2025(VerificationMethod):
+    """MLDSA44VerificationKey2025 VerificationMethod."""
+
+    type: Literal["MLDSA44VerificationKey2025"]
+    public_key_base58: str
+
 
 class Ed25519VerificationKey2018(VerificationMethod):
     """Ed25519VerificationKey2018 VerificationMethod."""
