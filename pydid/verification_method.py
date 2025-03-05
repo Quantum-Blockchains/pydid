@@ -311,4 +311,5 @@ KnownVerificationMethods = Union[
     SchnorrSecp256k1VerificationKey2019,
     EcdsaSecp256k1RecoveryMethod2020,
     Multikey,
+    MLDSA44VerificationKey2025,
 ]
