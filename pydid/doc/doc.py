@@ -152,6 +152,7 @@ class DIDDocument(BasicDIDDocument):
     @classmethod
     def deserialize(cls, value: dict) -> "DIDDocument":
         """Wrap deserialization with a basic validation pass before matching to type."""
+        print("\033[31mDIDDocument.def deserialize()\033[0m")
         DIDDocumentRoot.deserialize(value)
         return super(DIDDocument, cls).deserialize(value)
 
