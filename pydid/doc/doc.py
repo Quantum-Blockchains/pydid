@@ -231,6 +231,8 @@ class NonconformantDocument(BaseDIDDocument):
 
     def dereference(self, reference: Union[str, DIDUrl]) -> Resource:
         """Dereference a DID URL to a document resource."""
+        print("\033[31mdef dereference()\033[0m")
+        print("\033[31mreference: \033[0m", reference)
         if isinstance(reference, str):
             reference = DIDUrl.parse(reference)
         if not reference.did:
