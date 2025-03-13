@@ -181,6 +181,12 @@ class VerificationMethod(Resource):
 
 
 # Verification Method Suites registered in DID Spec
+class MLKEM512KeyAgreementKey2025(VerificationMethod):
+    """MLKEM512KeyAgreementKey2025 VerificationMethod."""
+
+    type: Literal["MLKEM512KeyAgreementKey2025"]
+    public_key_multibase: str
+
 
 class MLDSA44VerificationKey2025(VerificationMethod):
     """MLDSA44VerificationKey2025 VerificationMethod."""
@@ -263,12 +269,6 @@ class X25519KeyAgreementKey2020(VerificationMethod):
     """X25519KeyAgreementKey2020 VerificationMethod."""
 
     type: Literal["X25519KeyAgreementKey2020"]
-    public_key_multibase: str
-
-class MLKEM512KeyAgreementKey2025(VerificationMethod):
-    """MLKEM512KeyAgreementKey2025 VerificationMethod."""
-
-    type: Literal["MLKEM512KeyAgreementKey2025"]
     public_key_multibase: str
 
 
