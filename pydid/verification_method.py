@@ -185,7 +185,7 @@ class MLKEM512KeyAgreementKey2025(VerificationMethod):
     """MLKEM512KeyAgreementKey2025 VerificationMethod."""
 
     type: Literal["MLKEM512KeyAgreementKey2025"]
-    public_key_multibase: str
+    public_key_base58: str
 
 
 class MLDSA44VerificationKey2025(VerificationMethod):
