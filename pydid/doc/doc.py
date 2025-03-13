@@ -117,6 +117,7 @@ class BasicDIDDocument(BaseDIDDocument):
             self.capability_delegation,
             self.service,
         ):
+            print("------ ", item)
             _indexer(item)
 
     def dereference(self, reference: Union[str, DIDUrl]) -> Resource:
