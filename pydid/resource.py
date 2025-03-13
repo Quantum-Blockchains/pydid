@@ -53,20 +53,12 @@ class Resource(BaseModel):
     @classmethod
     def deserialize(cls: Type[ResourceType], value: dict) -> ResourceType:
         """Deserialize into Resource subtype."""
-        print("\033[31mResouce.def deserialize()\033[0m")
-        print("\033[31m 1 \033[0m")
-        print("\033[31mcls: \033[0m", cls)
-        print("\033[31mvalue: \033[0m", value)
         with wrap_validation_error(
             ValueError,
             message=f"Failed to deserialize {cls.__name__}",
         ):
             resource_adapter = TypeAdapter(cls)
-            print("\033[31m resource_adapter: \033[0m", resource_adapter)
-            tmp = resource_adapter.validate_python(value)
-            print("\033[31mResource.deserialize() tmp: \033[0m", tmp)
-            # return resource_adapter.validate_python(value)
-            return tmp
+            return resource_adapter.validate_python(value)
 
     @classmethod
     def from_json(cls, value: str):
@@ -81,7 +73,6 @@ class Resource(BaseModel):
     @classmethod
     def _fill_in_required_literals(cls, **kwargs) -> Dict[str, Any]:
         """Return dictionary of field name to value from literals."""
-        print("  cls.model_fields.values(): ", cls.model_fields.values)
         for field in cls.model_fields.values():
             field_name = field.alias
             field_type = field.annotation
@@ -96,7 +87,6 @@ class Resource(BaseModel):
     @classmethod
     def _overwrite_none_with_defaults(cls, **kwargs) -> Dict[str, Any]:
         """Overwrite none values in kwargs with defaults for corresponding field."""
-        print("\033[31mResource._overwrite_none_with_defaults()\033[0m")
         for field in cls.model_fields.values():
             field_name = field.alias
             if field_name in kwargs and kwargs[field_name] is None:
@@ -106,7 +96,6 @@ class Resource(BaseModel):
     @classmethod
     def make(cls: Type[ResourceType], **kwargs) -> ResourceType:
         """Create instance of class, filling in literals."""
-        print("\033[31mResource.def make()\033[0m")
         kwargs = cls._fill_in_required_literals(**kwargs)
         kwargs = cls._overwrite_none_with_defaults(**kwargs)
         return cls(**kwargs)

@@ -50,8 +50,6 @@ class DIDDocumentRoot(Resource):
     @classmethod
     def _listify(cls, value) -> Optional[list]:
         """Transform values into lists that are allowed to be a list or single."""
-        print("\033[31mDIDDocumentRoot.def _listify()\033[0m")
-        print("\033[31mvalue: \033[0m", value)
         if value is None:
             return
         if isinstance(value, list):
@@ -84,18 +82,14 @@ class BasicDIDDocument(BaseDIDDocument):
         are checked against the original. If they do not match, an error will
         be thrown.
         """
-        print("\033[31mdef BasicDIDDocument._index_resources()\033[0m")
         def _indexer(item):
             if not item:
-                print("  if not item")
                 # Attribute isn't set
                 return
             if isinstance(item, DIDUrl):
-                print("  if isinstance(item, DIDUrl)")
                 # We don't index references
                 return
             if isinstance(item, list):
-                print("  if isinstance(item, list)")
                 for subitem in item:
                     _indexer(subitem)
                 return
@@ -122,12 +116,10 @@ class BasicDIDDocument(BaseDIDDocument):
             self.capability_delegation,
             self.service,
         ):
-            print("------ ", item)
             _indexer(item)
 
     def dereference(self, reference: Union[str, DIDUrl]) -> Resource:
         """Dereference a DID URL to a document resource."""
-        print("\033[31mBasicDIDDocument.def dereference()\033[0m")
         if isinstance(reference, str):
             reference = DIDUrl.parse(reference)
         if not reference.did:
@@ -159,16 +151,8 @@ class DIDDocument(BasicDIDDocument):
     @classmethod
     def deserialize(cls, value: dict) -> "DIDDocument":
         """Wrap deserialization with a basic validation pass before matching to type."""
-        print("\033[31mDIDDocument.def deserialize()\033[0m")
-        print("\033[31mcls: \033[0m", cls)
-        print("\033[31mvalue: \033[0m", value)
-        
         DIDDocumentRoot.deserialize(value)
-        
-        tmp = super(DIDDocument, cls).deserialize(value)
-        print("\033[31mDIDDocument.deserialize() tmp: \033[0m", tmp)
-        # return super(DIDDocument, cls).deserialize(value)
-        return tmp
+        return super(DIDDocument, cls).deserialize(value)
 
 
 class NonconformantDocument(BaseDIDDocument):
@@ -196,7 +180,6 @@ class NonconformantDocument(BaseDIDDocument):
         This is done in the most permissive way possible. ID collisions will
         result in overwritten data instead of raising an error.
         """
-        print("\033[31mNonconformantDocument.def _index_resources()\033[0m")
         def _indexer(item):
             if isinstance(item, list):
                 # Recurse on lists
@@ -233,8 +216,6 @@ class NonconformantDocument(BaseDIDDocument):
 
     def dereference(self, reference: Union[str, DIDUrl]) -> Resource:
         """Dereference a DID URL to a document resource."""
-        print("\033[31mNonconformantDocument.def dereference()\033[0m")
-        print("\033[31mreference: \033[0m", reference)
         if isinstance(reference, str):
             reference = DIDUrl.parse(reference)
         if not reference.did:
