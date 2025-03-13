@@ -50,6 +50,8 @@ class DIDDocumentRoot(Resource):
     @classmethod
     def _listify(cls, value) -> Optional[list]:
         """Transform values into lists that are allowed to be a list or single."""
+        print("\033[31mDIDDocumentRoot.def _listify()\033[0m")
+        print("\033[31mvalue: \033[0m", value)
         if value is None:
             return
         if isinstance(value, list):
