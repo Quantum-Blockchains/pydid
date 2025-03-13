@@ -96,6 +96,7 @@ class Resource(BaseModel):
     @classmethod
     def _overwrite_none_with_defaults(cls, **kwargs) -> Dict[str, Any]:
         """Overwrite none values in kwargs with defaults for corresponding field."""
+        print("\033[31mResource._overwrite_none_with_defaults()\033[0m")
         for field in cls.model_fields.values():
             field_name = field.alias
             if field_name in kwargs and kwargs[field_name] is None:
@@ -105,6 +106,7 @@ class Resource(BaseModel):
     @classmethod
     def make(cls: Type[ResourceType], **kwargs) -> ResourceType:
         """Create instance of class, filling in literals."""
+        print("\033[31mResource.def make()\033[0m")
         kwargs = cls._fill_in_required_literals(**kwargs)
         kwargs = cls._overwrite_none_with_defaults(**kwargs)
         return cls(**kwargs)
