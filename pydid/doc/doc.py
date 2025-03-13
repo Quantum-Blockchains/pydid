@@ -82,7 +82,7 @@ class BasicDIDDocument(BaseDIDDocument):
         are checked against the original. If they do not match, an error will
         be thrown.
         """
-        print("\033[31mdef _index_resources()\033[0m")
+        print("\033[31mdef BasicDIDDocument._index_resources()\033[0m")
         def _indexer(item):
             if not item:
                 print("  if not item")
@@ -125,7 +125,7 @@ class BasicDIDDocument(BaseDIDDocument):
 
     def dereference(self, reference: Union[str, DIDUrl]) -> Resource:
         """Dereference a DID URL to a document resource."""
-        print("\033[31mdef dereference()\033[0m")
+        print("\033[31mBasicDIDDocument.def dereference()\033[0m")
         if isinstance(reference, str):
             reference = DIDUrl.parse(reference)
         if not reference.did:
@@ -194,7 +194,7 @@ class NonconformantDocument(BaseDIDDocument):
         This is done in the most permissive way possible. ID collisions will
         result in overwritten data instead of raising an error.
         """
-
+        print("\033[31mNonconformantDocument.def _index_resources()\033[0m")
         def _indexer(item):
             if isinstance(item, list):
                 # Recurse on lists
@@ -231,7 +231,7 @@ class NonconformantDocument(BaseDIDDocument):
 
     def dereference(self, reference: Union[str, DIDUrl]) -> Resource:
         """Dereference a DID URL to a document resource."""
-        print("\033[31mdef dereference()\033[0m")
+        print("\033[31mNonconformantDocument.def dereference()\033[0m")
         print("\033[31mreference: \033[0m", reference)
         if isinstance(reference, str):
             reference = DIDUrl.parse(reference)
