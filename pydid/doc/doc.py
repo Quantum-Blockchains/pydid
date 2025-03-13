@@ -82,7 +82,7 @@ class BasicDIDDocument(BaseDIDDocument):
         are checked against the original. If they do not match, an error will
         be thrown.
         """
-
+        print("\033[31mdef _index_resources()\033[0m")
         def _indexer(item):
             if not item:
                 # Attribute isn't set
@@ -121,6 +121,7 @@ class BasicDIDDocument(BaseDIDDocument):
 
     def dereference(self, reference: Union[str, DIDUrl]) -> Resource:
         """Dereference a DID URL to a document resource."""
+        print("\033[31mdef dereference()\033[0m")
         if isinstance(reference, str):
             reference = DIDUrl.parse(reference)
         if not reference.did:
