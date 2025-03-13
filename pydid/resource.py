@@ -64,7 +64,7 @@ class Resource(BaseModel):
             resource_adapter = TypeAdapter(cls)
             print("\033[31m resource_adapter: \033[0m", resource_adapter)
             tmp = resource_adapter.validate_python(value)
-            print("\033[31m tmp: \033[0m", tmp)
+            print("\033[31mResource.deserialize() tmp: \033[0m", tmp)
             # return resource_adapter.validate_python(value)
             return tmp
 
