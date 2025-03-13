@@ -62,6 +62,7 @@ def deserialize_document(
             value = correction(value)
 
     cls = cls or DIDDocument
+    print("\033[31mvalue: \033[0m", value)
     if strict:
         print("\033[31mif strict\033[0m")
         print("\033[31mcls: \033[0m", cls)
