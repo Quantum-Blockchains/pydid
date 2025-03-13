@@ -85,12 +85,15 @@ class BasicDIDDocument(BaseDIDDocument):
         print("\033[31mdef _index_resources()\033[0m")
         def _indexer(item):
             if not item:
+                print("  if not item")
                 # Attribute isn't set
                 return
             if isinstance(item, DIDUrl):
+                print("  if isinstance(item, DIDUrl)")
                 # We don't index references
                 return
             if isinstance(item, list):
+                print("  if isinstance(item, list)")
                 for subitem in item:
                     _indexer(subitem)
                 return
