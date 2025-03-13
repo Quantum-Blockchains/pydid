@@ -81,6 +81,7 @@ class Resource(BaseModel):
     @classmethod
     def _fill_in_required_literals(cls, **kwargs) -> Dict[str, Any]:
         """Return dictionary of field name to value from literals."""
+        print("  cls.model_fields.values(): ", cls.model_fields.values)
         for field in cls.model_fields.values():
             field_name = field.alias
             field_type = field.annotation
