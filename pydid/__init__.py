@@ -55,14 +55,18 @@ def deserialize_document(
     cls: Optional[Type[BaseDIDDocument]] = None,
 ) -> BaseDIDDocument:
     """Deserialize a document from a dictionary."""
+    print("\033[31mdef deserialize_document()\033[0m")
     if corrections:
+        print("\033[31mif correction\033[0m")
         for correction in corrections:
             value = correction(value)
 
     cls = cls or DIDDocument
     if strict:
+        print("\033[31mif strict\033[0m")
         return cls.deserialize(value)
     try:
+        print("\033[31mtry\033[0m")
         return cls.deserialize(value)
     except ValueError as error:
         LOGGER.warning("Failed to deserialize document: %s", error)

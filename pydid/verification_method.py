@@ -266,7 +266,7 @@ class X25519KeyAgreementKey2020(VerificationMethod):
     public_key_multibase: str
 
 class MLKEM512KeyAgreementKey2025(VerificationMethod):
-    """X25519KeyAgreementKey2020 VerificationMethod."""
+    """MLKEM512KeyAgreementKey2025 VerificationMethod."""
 
     type: Literal["MLKEM512KeyAgreementKey2025"]
     public_key_multibase: str
