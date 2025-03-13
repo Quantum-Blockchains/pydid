@@ -35,7 +35,7 @@ class DIDCommV1Service(Service):
     service_endpoint: EndpointStrings
     recipient_keys: List[DIDUrl]
     routing_keys: List[DIDUrl] = []
-    signingKeys: List[DIDUrl] = []
+    signing_keys: List[DIDUrl] = []
     accept: Optional[List[str]] = None
     priority: int = 0
 
