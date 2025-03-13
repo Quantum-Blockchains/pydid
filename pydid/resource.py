@@ -54,11 +54,14 @@ class Resource(BaseModel):
     def deserialize(cls: Type[ResourceType], value: dict) -> ResourceType:
         """Deserialize into Resource subtype."""
         print("\033[31mResouce.def deserialize()\033[0m")
+        print("\033[31m 1 \033[0m")
+        print("\033[31mcls: \033[0m", cls)
         with wrap_validation_error(
             ValueError,
             message=f"Failed to deserialize {cls.__name__}",
         ):
             resource_adapter = TypeAdapter(cls)
+            print("\033[31m resource_adapter: \033[0m", resource_adapter)
             return resource_adapter.validate_python(value)
 
     @classmethod
