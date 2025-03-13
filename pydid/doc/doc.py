@@ -164,6 +164,7 @@ class DIDDocument(BasicDIDDocument):
         DIDDocumentRoot.deserialize(value)
         
         tmp = super(DIDDocument, cls).deserialize(value)
+        print("\033[31m1 tmp: \033[0m", tmp)
         # return super(DIDDocument, cls).deserialize(value)
         return tmp
 

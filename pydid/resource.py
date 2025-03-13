@@ -56,13 +56,17 @@ class Resource(BaseModel):
         print("\033[31mResouce.def deserialize()\033[0m")
         print("\033[31m 1 \033[0m")
         print("\033[31mcls: \033[0m", cls)
+        print("\033[31mvalue: \033[0m", value)
         with wrap_validation_error(
             ValueError,
             message=f"Failed to deserialize {cls.__name__}",
         ):
             resource_adapter = TypeAdapter(cls)
             print("\033[31m resource_adapter: \033[0m", resource_adapter)
-            return resource_adapter.validate_python(value)
+            tmp = resource_adapter.validate_python(value)
+            print("\033[31m tmp: \033[0m", tmp)
+            # return resource_adapter.validate_python(value)
+            return tmp
 
     @classmethod
     def from_json(cls, value: str):
