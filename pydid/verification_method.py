@@ -265,6 +265,12 @@ class X25519KeyAgreementKey2020(VerificationMethod):
     type: Literal["X25519KeyAgreementKey2020"]
     public_key_multibase: str
 
+class MLKEM512KeyAgreementKey2025(VerificationMethod):
+    """X25519KeyAgreementKey2020 VerificationMethod."""
+
+    type: Literal["MLKEM512KeyAgreementKey2025"]
+    public_key_multibase: str
+
 
 class SchnorrSecp256k1VerificationKey2019(VerificationMethod):
     """SchnorrSecp256k1VerificationKey2019 VerificationMethod."""
@@ -312,4 +318,5 @@ KnownVerificationMethods = Union[
     EcdsaSecp256k1RecoveryMethod2020,
     Multikey,
     MLDSA44VerificationKey2025,
+    MLKEM512KeyAgreementKey2025,
 ]
